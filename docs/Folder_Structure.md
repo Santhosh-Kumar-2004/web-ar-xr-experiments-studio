@@ -1,50 +1,40 @@
 webar-project/
 │
-├── frontend/                # Vite + WebAR
-│   ├── public/
-│   │   ├── qr/
-│   │   ├── models/
-│   │   ├── markers/
-│   │   └── images/
+├── frontend/                 # Vite + React (WebAR lives here)
+│   ├── public/               # Static assets (served as-is)
+│   │   ├── models/           # 3D models (.glb, .gltf)
+│   │   ├── markers/          # Marker images (for marker-based AR)
+│   │   ├── images/           # UI images
+│   │   └── qr/               # Generated QR codes
 │   │
 │   ├── src/
-│   │   ├── ar/
-│   │   │   ├── scenes/
-│   │   │   ├── components/
-│   │   │   └── loaders/
+│   │   ├── ar/               # AR-specific logic (very important)
+│   │   │   ├── scenes/       # AR scenes
+│   │   │   ├── components/   # AR objects / helpers
+│   │   │   └── loaders/      # Model / texture loaders
 │   │   │
-│   │   ├── pages/
-│   │   ├── services/
-│   │   ├── utils/
-│   │   ├── styles/
+│   │   ├── pages/            # Page-level components (ARPage, Home)
+│   │   ├── services/         # API calls to backend
+│   │   ├── utils/            # Helpers (device check, permissions)
+│   │   ├── styles/           # CSS / global styles
+│   │   ├── App.jsx
 │   │   └── main.jsx
 │   │
 │   ├── index.html
 │   ├── vite.config.js
 │   └── package.json
 │
-├── backend/                 # FastAPI
+├── backend/                  # FastAPI backend
 │   ├── app/
-│   │   ├── api/
-│   │   ├── core/
-│   │   ├── models/
-│   │   ├── services/
-│   │   └── main.py
+│   │   ├── api/              # API routes
+│   │   ├── core/             # Config, settings
+│   │   ├── models/           # Data models
+│   │   ├── services/         # Business logic
+│   │   └── main.py           # FastAPI entry point
 │   │
 │   ├── requirements.txt
 │   └── README.md
 │
-├── docs/                    # Learning notes + AR theory
-│   ├── webar-basics.md
-│   ├── webxr-notes.md
-│   ├── arjs-vs-mindar.md
-│   └── qr-flow.md
-│
-├── phases/                  # Phase checklists
-│   ├── phase-01.md
-│   ├── phase-02.md
-│   ├── ...
-│
-├── .gitignore
-├── README.md
-└── roadmap.md
+├── docs/                     # Learning & theory (Phase 0)
+├── roadmap.md
+└── README.md
