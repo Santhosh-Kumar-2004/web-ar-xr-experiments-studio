@@ -3,7 +3,7 @@
 **Goal:** Understand WebAR ecosystem
 
 *   What is WebAR
-    
+
 *   WebXR basics
     
 *   Marker-based vs Markerless AR
