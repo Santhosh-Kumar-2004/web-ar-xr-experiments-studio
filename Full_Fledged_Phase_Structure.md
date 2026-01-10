@@ -57,7 +57,7 @@
 *   Camera permission handling
     
 
-✅ Output:
+✅ Output:  
 
 *   Working QR → webpage
     
