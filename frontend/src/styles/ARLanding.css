@@ -1,0 +1,152 @@
+.ar-landing-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #05070a;
+  overflow: hidden;
+  position: relative;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Background Effect */
+.ar-background-gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #1e293b 0%, #05070a 100%);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.ar-content-card {
+  position: relative;
+  z-index: 1;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  padding: 40px 30px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* The Scanning Box UI */
+.ar-visual-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ar-icon { font-size: 3rem; }
+
+.corner {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #4f46e5;
+}
+.top-left { top: -5px; left: -5px; border-right: 0; border-bottom: 0; }
+.top-right { top: -5px; right: -5px; border-left: 0; border-bottom: 0; }
+.bottom-left { bottom: -5px; left: -5px; border-right: 0; border-top: 0; }
+.bottom-right { bottom: -5px; right: -5px; border-left: 0; border-top: 0; }
+
+.scan-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #4f46e5;
+  box-shadow: 0 0 15px #4f46e5;
+  top: 0;
+  left: 0;
+  animation: scan 2.5s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes scan {
+  0%, 100% { top: 5%; }
+  50% { top: 95%; }
+}
+
+/* Typography */
+.ar-title {
+  color: #ffffff;
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.ar-subtitle {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.ar-instructions {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  gap: 15px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-num {
+  width: 24px;
+  height: 24px;
+  background: #4f46e5;
+  color: white;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step p { color: #cbd5e1; font-size: 0.75rem; font-weight: 500; }
+
+/* Button Styling */
+.start-ar-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: none;
+  color: #05070a;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.start-ar-btn:hover {
+  background: #4f46e5;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(79, 70, 229, 0.4);
+}
+
+.privacy-note {
+  margin-top: 20px;
+  color: #64748b;
+  font-size: 0.75rem;
+}
