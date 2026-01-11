@@ -22,12 +22,25 @@ function ARLanding() {
         // Stop mic
         micStream.getTracks().forEach(track => track.stop());
     
+        alert("Camera access granted. Initializing Mic Now...");
+        } catch (err) {
+        alert(`Access denied: Please enable Mic permissions so I can hear you. ${err}`);
+        }
+    };
+
+    const requestCamMic = async () => {
+    try {
+        const micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        console.log(micStream);
+
+        // Stop mic
+        micStream.getTracks().forEach(track => track.stop());
+    
         alert("Camera access granted. Initializing AR Environment...");
         } catch (err) {
         alert(`Access denied: Please enable camera permissions in your browser settings. ${err}`);
         }
     };
-
   return (
     <div className="ar-landing-wrapper">
       <div className="ar-background-gradient"></div>
@@ -63,7 +76,7 @@ function ARLanding() {
           <span className="btn-text">Initialize Camera</span>
           <span className="btn-icon">→</span>
         </button>
-        
+
         <button className="start-ar-btn" onClick={requestMic}>
           <span className="btn-text">Initialize Microphone</span>
           <span className="btn-icon">→</span>
