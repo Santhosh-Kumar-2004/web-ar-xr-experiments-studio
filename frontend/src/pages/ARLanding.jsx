@@ -30,15 +30,19 @@ function ARLanding() {
 
     const requestCamMic = async () => {
     try {
-        const micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        console.log(micStream);
+        const camMicStream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: true
+            });
+            console.log(camMicStream);
 
-        // Stop mic
-        micStream.getTracks().forEach(track => track.stop());
+            // Stop both
+            camMicStream.getTracks().forEach(track => track.stop());
+
     
         alert("Camera access granted. Initializing AR Environment...");
         } catch (err) {
-        alert(`Access denied: Please enable camera permissions in your browser settings. ${err}`);
+        alert(`Access denied: Please enable Cam and Mic permissions in your browser settings. ${err}`);
         }
     };
   return (
