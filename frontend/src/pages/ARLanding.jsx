@@ -63,6 +63,11 @@ function ARLanding() {
           <span className="btn-text">Initialize Camera</span>
           <span className="btn-icon">→</span>
         </button>
+        
+        <button className="start-ar-btn" onClick={requestMic}>
+          <span className="btn-text">Initialize Microphone</span>
+          <span className="btn-icon">→</span>
+        </button>
 
         <p className="privacy-note">🔒 Your data is processed locally and never stored.</p>
       </div>
