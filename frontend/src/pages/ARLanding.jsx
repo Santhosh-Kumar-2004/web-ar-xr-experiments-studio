@@ -14,6 +14,20 @@ function ARLanding() {
     }
   };
 
+  const requestMic = async () => {
+    try {
+        const micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        console.log(micStream);
+
+        // Stop mic
+        micStream.getTracks().forEach(track => track.stop());
+    
+        alert("Camera access granted. Initializing AR Environment...");
+        } catch (err) {
+        alert(`Access denied: Please enable camera permissions in your browser settings. ${err}`);
+        }
+    };
+
   return (
     <div className="ar-landing-wrapper">
       <div className="ar-background-gradient"></div>
