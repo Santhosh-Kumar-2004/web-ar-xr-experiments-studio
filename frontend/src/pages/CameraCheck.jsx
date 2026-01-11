@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import "./CameraCheck.css";
+import "../styles/CameraCheck.css";
 
 function CameraCheck() {
   const videoRef = useRef(null);
