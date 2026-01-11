@@ -4,7 +4,7 @@ function ARLanding() {
       await navigator.mediaDevices.getUserMedia({ video: true });
       alert("Camera permission granted. AR ready.");
     } catch (err) {
-      alert(`Camera permission denied.${err}`);
+      alert(`Camera permission denied. ${err}`);
     }
   };
 
