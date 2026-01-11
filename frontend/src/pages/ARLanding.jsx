@@ -64,19 +64,16 @@ function ARLanding() {
         alert(`Access denied: Please enable Cam and Mic permissions in your browser settings. ${err}`);
         }
     };
-    
-    const requestLocation = async () => {
+
+    const requestScreen = async () => {
     try {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                const location = position.coords;
-                console.log("Latitude:", location.latitude);
-                console.log("Longitude:", location.longitude);
-            },
-            (error) => {
-                console.error("Location error:", error);
-            }
-            );
+        const screenStream = await navigator.mediaDevices.getDisplayMedia({
+            video: true
+            });
+            console.log(screenStream);
+
+            // Stop screen sharing
+            screenStream.getTracks().forEach(track => track.stop());
 
         alert("Camera access granted. Initializing AR Environment...");
         } catch (err) {
