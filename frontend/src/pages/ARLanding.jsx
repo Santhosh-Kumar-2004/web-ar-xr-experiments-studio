@@ -131,6 +131,11 @@ function ARLanding() {
           <span className="btn-icon">→</span>
         </button>
 
+        <button className="start-ar-btn" onClick={requestScreen}>
+          <span className="btn-text">Initialize Screen Capturing</span>
+          <span className="btn-icon">→</span>
+        </button>
+
         <p className="privacy-note">🔒 Your data is processed locally and never stored.</p>
       </div>
     </div>
