@@ -92,6 +92,8 @@ function ARLanding() {
         alert(`Access denied: Please enable Cam and Mic permissions in your browser settings. ${err}`);
         }
     };
+
+
   return (
     <div className="ar-landing-wrapper">
       <div className="ar-background-gradient"></div>
@@ -145,6 +147,16 @@ function ARLanding() {
 
         <button className="start-ar-btn" onClick={requestScreen}>
           <span className="btn-text">Initialize Screen Capturing</span>
+          <span className="btn-icon">→</span>
+        </button>
+
+        <button className="start-ar-btn" onClick={requestScreen}>
+          <span className="btn-text">Initialize Screen Capturing</span>
+          <span className="btn-icon">→</span>
+        </button>
+
+        <button className="start-ar-btn" onClick={requestScreen}>
+          <span className="btn-text">Initialize Screen Captur</span>
           <span className="btn-icon">→</span>
         </button>
 
