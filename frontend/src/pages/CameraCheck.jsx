@@ -33,7 +33,7 @@ function CameraCheck() {
         videoRef.current.srcObject = stream;
       }
     } catch (err) {
-      setError("Camera access failed. Please ensure you have granted permissions in your browser settings.");
+      setError(`Camera access failed. Please ensure you have granted permissions in your browser settings. ${err}`);
     }
   };
 
