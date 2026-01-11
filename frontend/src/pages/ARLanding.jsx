@@ -1,5 +1,5 @@
 import React from 'react';
-import "./ARLanding.css";
+import "../styles/ARLanding.css";
 
 function ARLanding() {
   const requestCamera = async () => {
