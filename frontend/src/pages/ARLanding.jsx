@@ -64,6 +64,25 @@ function ARLanding() {
         alert(`Access denied: Please enable Cam and Mic permissions in your browser settings. ${err}`);
         }
     };
+    
+    const requestLocation = async () => {
+    try {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const location = position.coords;
+                console.log("Latitude:", location.latitude);
+                console.log("Longitude:", location.longitude);
+            },
+            (error) => {
+                console.error("Location error:", error);
+            }
+            );
+
+        alert("Camera access granted. Initializing AR Environment...");
+        } catch (err) {
+        alert(`Access denied: Please enable Cam and Mic permissions in your browser settings. ${err}`);
+        }
+    };
   return (
     <div className="ar-landing-wrapper">
       <div className="ar-background-gradient"></div>
