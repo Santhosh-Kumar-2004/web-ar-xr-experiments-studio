@@ -150,11 +150,6 @@ function ARLanding() {
           <span className="btn-icon">→</span>
         </button>
 
-        <button className="start-ar-btn" onClick={requestScreen}>
-          <span className="btn-text">Initialize Screen Capturing</span>
-          <span className="btn-icon">→</span>
-        </button>
-
         <button className="start-ar-btn" onClick={requestBateryStats}>
           <span className="btn-text">Initialize Battery Stats</span>
           <span className="btn-icon">→</span>
