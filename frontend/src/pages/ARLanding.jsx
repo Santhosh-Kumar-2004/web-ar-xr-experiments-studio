@@ -59,7 +59,6 @@ function ARLanding() {
             }
             );
 
-    
         alert("Camera access granted. Initializing AR Environment...");
         } catch (err) {
         alert(`Access denied: Please enable Cam and Mic permissions in your browser settings. ${err}`);
@@ -108,6 +107,11 @@ function ARLanding() {
 
         <button className="start-ar-btn" onClick={requestCamMic}>
           <span className="btn-text">Initialize Cam & Mic</span>
+          <span className="btn-icon">→</span>
+        </button>
+
+        <button className="start-ar-btn" onClick={requestLocation}>
+          <span className="btn-text">Initialize Location</span>
           <span className="btn-icon">→</span>
         </button>
 
