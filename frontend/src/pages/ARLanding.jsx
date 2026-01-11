@@ -80,9 +80,14 @@ function ARLanding() {
           <span className="btn-text">Initialize Camera</span>
           <span className="btn-icon">→</span>
         </button>
-
+        <hr />
         <button className="start-ar-btn" onClick={requestMic}>
           <span className="btn-text">Initialize Microphone</span>
+          <span className="btn-icon">→</span>
+        </button>
+
+        <button className="start-ar-btn" onClick={requestCamMic}>
+          <span className="btn-text">Initialize Cam & Mic</span>
           <span className="btn-icon">→</span>
         </button>
 
