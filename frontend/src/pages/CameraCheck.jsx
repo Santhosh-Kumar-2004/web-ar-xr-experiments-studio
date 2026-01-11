@@ -1,13 +1,24 @@
 import { useEffect, useRef, useState } from "react";
+import "./CameraCheck.css";
 
 function CameraCheck() {
   const videoRef = useRef(null);
+  const streamRef = useRef(null); // Keep track of the stream to stop it later
   const [error, setError] = useState("");
   const [xrSupported, setXrSupported] = useState(null);
 
   useEffect(() => {
-    startCamera();
+      // eslint-disable-next-line react-hooks/immutability
+      startCamera();
+      // eslint-disable-next-line react-hooks/immutability
     checkWebXR();
+
+    // Cleanup: Stop the camera when the user leaves this page
+    return () => {
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach((track) => track.stop());
+      }
+    };
   }, []);
 
   const startCamera = async () => {
@@ -17,11 +28,12 @@ function CameraCheck() {
         audio: false,
       });
 
+      streamRef.current = stream;
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
       }
     } catch (err) {
-      setError("Camera access failed. Please allow camera permission.");
+      setError("Camera access failed. Please ensure you have granted permissions in your browser settings.");
     }
   };
 
@@ -29,9 +41,7 @@ function CameraCheck() {
     if ("xr" in navigator) {
       navigator.xr
         .isSessionSupported("immersive-ar")
-        .then((supported) => {
-          setXrSupported(supported);
-        })
+        .then((supported) => setXrSupported(supported))
         .catch(() => setXrSupported(false));
     } else {
       setXrSupported(false);
@@ -39,40 +49,49 @@ function CameraCheck() {
   };
 
   return (
-    <div style={{ height: "100vh", background: "#000", color: "#fff" }}>
-      {error && (
-        <div style={{ padding: "10px", background: "red" }}>
-          {error}
-        </div>
-      )}
-
+    <div className="camera-check-viewport">
+      {/* Video Feed */}
       <video
         ref={videoRef}
         autoPlay
         playsInline
         muted
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-        }}
+        className="camera-feed"
       />
 
-      <div
-        style={{
-          position: "absolute",
-          bottom: 0,
-          width: "100%",
-          padding: "10px",
-          background: "rgba(0,0,0,0.6)",
-          textAlign: "center",
-        }}
-      >
-        {xrSupported === null && <p>Checking AR support...</p>}
-        {xrSupported === true && <p>✅ WebXR AR supported</p>}
+      {/* Top Warning Bar */}
+      {error && (
+        <div className="camera-error-toast">
+          <span className="icon">⚠️</span> {error}
+        </div>
+      )}
+
+      {/* AR Scanning Frame */}
+      <div className="ar-overlay-frame">
+        <div className="scanner-corner tl"></div>
+        <div className="scanner-corner tr"></div>
+        <div className="scanner-corner bl"></div>
+        <div className="scanner-corner br"></div>
+      </div>
+
+      {/* Status HUD (Bottom Center) */}
+      <div className="status-hud-container">
+        <div className={`status-pill ${xrSupported === null ? 'checking' : xrSupported ? 'success' : 'fail'}`}>
+          <div className="pulse-indicator"></div>
+          {xrSupported === null && "Validating AR System..."}
+          {xrSupported === true && "AR Core Ready"}
+          {xrSupported === false && "AR Not Supported"}
+        </div>
+        
         {xrSupported === false && (
-          <p>⚠️ WebXR AR not supported on this browser</p>
+          <p className="compatibility-tip">Try opening this page in Chrome or Safari.</p>
         )}
+      </div>
+
+      {/* Action Controls */}
+      <div className="camera-actions">
+         <button className="back-btn" onClick={() => window.history.back()}>Exit</button>
+         {xrSupported && <button className="launch-btn">Enter AR Mode</button>}
       </div>
     </div>
   );
