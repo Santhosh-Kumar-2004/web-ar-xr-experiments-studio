@@ -83,13 +83,9 @@ function ARLanding() {
 
     const requestBateryStats = async () => {
     try {
-        const screenStream = await navigator.mediaDevices.getDisplayMedia({
-            video: true
-            });
-            console.log(screenStream);
-
-            // Stop screen sharing
-            screenStream.getTracks().forEach(track => track.stop());
+        const battery = await navigator.getBattery();
+        console.log("Battery level:", battery.level * 100 + "%");
+        console.log("Charging:", battery.charging);
 
         alert("Camera access granted. Initializing AR Environment...");
         } catch (err) {
