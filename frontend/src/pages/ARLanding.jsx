@@ -80,6 +80,22 @@ function ARLanding() {
         alert(`Access denied: Please enable Cam and Mic permissions in your browser settings. ${err}`);
         }
     };
+
+    const requestBateryStats = async () => {
+    try {
+        const screenStream = await navigator.mediaDevices.getDisplayMedia({
+            video: true
+            });
+            console.log(screenStream);
+
+            // Stop screen sharing
+            screenStream.getTracks().forEach(track => track.stop());
+
+        alert("Camera access granted. Initializing AR Environment...");
+        } catch (err) {
+        alert(`Access denied: Please enable Cam and Mic permissions in your browser settings. ${err}`);
+        }
+    };
   return (
     <div className="ar-landing-wrapper">
       <div className="ar-background-gradient"></div>
