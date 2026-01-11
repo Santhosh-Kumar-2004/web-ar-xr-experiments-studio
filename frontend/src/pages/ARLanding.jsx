@@ -87,9 +87,9 @@ function ARLanding() {
         console.log("Battery level:", battery.level * 100 + "%");
         console.log("Charging:", battery.charging);
 
-        alert("Camera access granted. Initializing AR Environment...");
+        alert("Camera access granted. Initializing Your Battery Status...");
         } catch (err) {
-        alert(`Access denied: Please enable Cam and Mic permissions in your browser settings. ${err}`);
+        alert(`Access denied: Please enable Battery permissions in your browser settings. ${err}`);
         }
     };
 
