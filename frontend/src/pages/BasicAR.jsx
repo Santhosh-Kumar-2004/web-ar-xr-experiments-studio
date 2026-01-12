@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-import "./BasicAR.css";
+import "../styles/BasicAR.css";
 
 function BasicAR() {
   const videoRef = useRef(null);
