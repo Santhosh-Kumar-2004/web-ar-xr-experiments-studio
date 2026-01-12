@@ -6,7 +6,9 @@ function BasicAR() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/immutability
     startCamera();
+    // eslint-disable-next-line react-hooks/immutability
     initThree();
   }, []);
 
