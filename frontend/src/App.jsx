@@ -1,6 +1,7 @@
 import ARLanding from './pages/ARLanding'
 import BasicAR from './pages/BasicAR'
 import CameraCheck from './pages/CameraCheck'
+import MarkerAR from './pages/MarkerAR'
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <hr />
       <BasicAR />
       <hr />
+      <MarkerAR />
     </>
   )
 }
