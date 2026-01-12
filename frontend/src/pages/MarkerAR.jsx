@@ -14,7 +14,7 @@ function MarkerAR() {
 
       const mindarThree = new MindARThree({
         container: document.body,
-        imageTargetSrc: "/markers/marker.mind",
+        imageTargetSrc: "/markers/target.mind",
       });
 
       const { renderer, scene, camera } = mindarThree;
