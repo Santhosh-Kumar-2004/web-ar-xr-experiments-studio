@@ -13,7 +13,12 @@ function App() {
       <hr />
       <BasicAR />
       <hr />
-      <MarkerAR />
+      {/* <MarkerAR /> */}
+      <iframe
+      src="/ar.html"
+      style={{ width: "100vw", height: "100vh", border: "none" }}
+      allow="camera"
+    />
     </>
   )
 }

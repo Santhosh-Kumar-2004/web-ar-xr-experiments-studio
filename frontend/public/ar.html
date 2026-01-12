@@ -10,45 +10,42 @@
 </head>
 <body>
 
-  <!-- Three.js (global) -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-three.prod.js"></script>
 
-  <!-- MindAR (browser build) -->
-  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-three.prod.js"></script>
+<script>
+  async function startAR() {
+    const { MindARThree } = window.MINDAR.IMAGE;
 
-  <script>
-    const startAR = async () => {
-      const { MindARThree } = window.MINDAR.IMAGE;
+    const mindarThree = new MindARThree({
+      container: document.body,
+      imageTargetSrc: "/markers/targets.mind",
+    });
 
-      const mindarThree = new MindARThree({
-        container: document.body,
-        imageTargetSrc: "/markers/target.mind",
-      });
+    const { renderer, scene, camera } = mindarThree;
 
-      const { renderer, scene, camera } = mindarThree;
+    const light = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1);
+    scene.add(light);
 
-      const light = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1);
-      scene.add(light);
+    const anchor = mindarThree.addAnchor(0);
 
-      const anchor = mindarThree.addAnchor(0);
+    const cube = new THREE.Mesh(
+      new THREE.BoxGeometry(0.5, 0.5, 0.5),
+      new THREE.MeshNormalMaterial()
+    );
 
-      const cube = new THREE.Mesh(
-        new THREE.BoxGeometry(0.5, 0.5, 0.5),
-        new THREE.MeshNormalMaterial()
-      );
+    anchor.group.add(cube);
 
-      anchor.group.add(cube);
+    await mindarThree.start();
 
-      await mindarThree.start();
+    renderer.setAnimationLoop(() => {
+      cube.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    });
+  }
 
-      renderer.setAnimationLoop(() => {
-        cube.rotation.y += 0.01;
-        renderer.render(scene, camera);
-      });
-    };
-
-    startAR();
-  </script>
+  startAR();
+</script>
 
 </body>
 </html>
