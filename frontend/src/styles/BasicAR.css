@@ -1,0 +1,121 @@
+.ar-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.ar-video-feed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.ar-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none; /* Allows clicks to go through to video if needed */
+}
+
+/* --- HUD Interface --- */
+.ar-hud {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+  pointer-events: none;
+}
+
+.hud-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  background: rgba(0, 0, 0, 0.4);
+  width: fit-content;
+  padding: 5px 15px;
+  border-radius: 4px;
+}
+
+.rec-dot {
+  width: 8px;
+  height: 8px;
+  background: #ff0000;
+  border-radius: 50%;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Center Crosshair */
+.ar-reticle {
+  align-self: center;
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.reticle-dot {
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.hud-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  pointer-events: auto; /* Enable buttons here */
+}
+
+.hud-stat label {
+  display: block;
+  font-size: 10px;
+  color: #4f46e5;
+  margin-bottom: 4px;
+}
+
+.hud-stat span {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.exit-ar {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s;
+}
+
+.exit-ar:hover {
+  background: #fff;
+  color: #000;
+}
