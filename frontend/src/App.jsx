@@ -7,7 +7,9 @@ function App() {
   return (
     <>
       <ARLanding />
+      <hr />
       <CameraCheck />
+      <hr />
       <BasicAR />
     </>
   )
