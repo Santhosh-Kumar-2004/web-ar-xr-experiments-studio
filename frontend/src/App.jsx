@@ -11,6 +11,7 @@ function App() {
       <CameraCheck />
       <hr />
       <BasicAR />
+      <hr />
     </>
   )
 }
