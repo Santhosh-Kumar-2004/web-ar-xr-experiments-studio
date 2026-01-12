@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marker AR</title>
+  <style>
+    body { margin: 0; overflow: hidden; }
+  </style>
+</head>
+<body>
+
+  <!-- Three.js (global) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+
+  <!-- MindAR (browser build) -->
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-three.prod.js"></script>
+
+  <script>
+    const startAR = async () => {
+      const { MindARThree } = window.MINDAR.IMAGE;
+
+      const mindarThree = new MindARThree({
+        container: document.body,
+        imageTargetSrc: "/markers/target.mind",
+      });
+
+      const { renderer, scene, camera } = mindarThree;
+
+      const light = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1);
+      scene.add(light);
+
+      const anchor = mindarThree.addAnchor(0);
+
+      const cube = new THREE.Mesh(
+        new THREE.BoxGeometry(0.5, 0.5, 0.5),
+        new THREE.MeshNormalMaterial()
+      );
+
+      anchor.group.add(cube);
+
+      await mindarThree.start();
+
+      renderer.setAnimationLoop(() => {
+        cube.rotation.y += 0.01;
+        renderer.render(scene, camera);
+      });
+    };
+
+    startAR();
+  </script>
+
+</body>
+</html>
