@@ -5,7 +5,7 @@ function MarkerAR() {
   useEffect(() => {
     const startAR = async () => {
       const MindARThree =
-        window.MINDAR.IMAGE.MindARThree;
+        window?.MINDAR?.IMAGE?.MindARThree;
         console.log("window.MINDAR =", window.MINDAR);
 
       if (!MindARThree) {
