@@ -10,11 +10,21 @@
 </head>
 <body>
 
+<!-- Three.js (global, required by MindAR UMD) -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-three.prod.js"></script>
+
+<!-- MindAR UMD (IMPORTANT: v1.2.4) -->
+<script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.4/dist/mindar-image-three.prod.js"></script>
 
 <script>
   async function startAR() {
+    console.log("MINDAR =", window.MINDAR);
+
+    if (!window.MINDAR) {
+      alert("MindAR failed to load");
+      return;
+    }
+
     const { MindARThree } = window.MINDAR.IMAGE;
 
     const mindarThree = new MindARThree({
