@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import * as THREE from "three";
-import { MindARThree } from "mind-ar/dist/mindar-image-three.prod.js";
+import { MindARThree } from "mind-ar/dist/mindar-image-three.esm.js";
 
 function MarkerAR() {
   useEffect(() => {
